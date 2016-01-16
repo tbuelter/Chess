@@ -1,8 +1,6 @@
 package figures;
 
-/**
- * Created by niklasbalazs on 16/01/16.
- */
+import otherObjects.*;
 public class Bishop {
     public Player player;
     public Location loc;

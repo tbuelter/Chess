@@ -1,11 +1,16 @@
 package figures;
 
-import otherObjects.*;
-public class Queen {
+import otherObjects.Location;
+import otherObjects.Player;
+
+/**
+ * Created by niklasbalazs on 16/01/16.
+ */
+public class Pawn {
     public Player player;
     public Location loc;
     public int steplength;
-    public Queen(Player player, Location loc, int steplength){
+    public Pawn(Player player, Location loc, int steplength){
         this.player = player;
         this.loc = loc;
         this.steplength = steplength;
