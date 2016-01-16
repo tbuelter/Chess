@@ -1,8 +1,6 @@
 package otherObjects;
 
-/**
- * Created by niklasbalazs on 16/01/16.
- */
+
 public class Location {
     public int x,y;
     public Location(int x, int y){
