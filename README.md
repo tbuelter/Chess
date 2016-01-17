@@ -1,4 +1,3 @@
 # Chess
 
-It doesn't work this is just a test
-Don't download
+It does not work yet because it is still in development.
