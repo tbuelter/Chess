@@ -4,11 +4,10 @@ import otherObjects.*;
 public class Knight {
     public Player player;
     public Location loc;
-    public int steplength;
+    public int[] steplength = {31};
     public Knight(Player player, Location loc, int steplength){
         this.player = player;
         this.loc = loc;
-        this.steplength = steplength;
     }
     public Player getName() {
         return player;
@@ -22,7 +21,7 @@ public class Knight {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
-    public int getSteplength(){
+    public int[] getSteplength(){
         return steplength;
     }
 }

@@ -4,11 +4,10 @@ import otherObjects.*;
 public class Bishop {
     public Player player;
     public Location loc;
-    public int steplength;
+    public int[] steplength = {1, 2, 3, 4, 5, 6, 7};
     public Bishop(Player player, Location loc, int steplength){
         this.player = player;
         this.loc = loc;
-        this.steplength = steplength;
     }
     public Player getName() {
         return player;
@@ -22,7 +21,7 @@ public class Bishop {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
-    public int getSteplength(){
+    public int[] getSteplength(){
         return steplength;
     }
 }

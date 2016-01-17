@@ -9,11 +9,10 @@ import otherObjects.Player;
 public class Pawn {
     public Player player;
     public Location loc;
-    public int steplength;
+    public int[] steplength = {1, 2};
     public Pawn(Player player, Location loc, int steplength){
         this.player = player;
         this.loc = loc;
-        this.steplength = steplength;
     }
     public Player getName() {
         return player;
@@ -27,7 +26,7 @@ public class Pawn {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
-    public int getSteplength(){
+    public int[] getSteplength(){
         return steplength;
     }
 }

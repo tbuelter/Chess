@@ -3,11 +3,10 @@ import otherObjects.*;
 public class King {
     public Player player;
     public Location loc;
-    public int steplength;
+    public int[] steplength = {1};
     public King(Player player, Location loc, int steplength){
         this.player = player;
         this.loc = loc;
-        this.steplength = steplength;
     }
     public Player getName() {
         return player;
@@ -21,7 +20,7 @@ public class King {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
-    public int getSteplength(){
+    public int[] getSteplength(){
         return steplength;
     }
 }
