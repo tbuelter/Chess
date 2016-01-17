@@ -12,7 +12,8 @@ public class NewGameButton {
     public Image King, Queen, Knight, Tower, Bishop, Pawn;
     public Graphics2D Grafik;
 
-    public void newGame() {
+
+    public static  void newGame() {
         String WhiteName = Ml.InputMessage("Name", "Name for white");
         Image WHITE_KING = new ImageIcon("res/KING_WHITE.png").getImage();
         Image WHITE_QUEEN = new ImageIcon("res/QUEEN_WHITE.png").getImage();
@@ -31,6 +32,7 @@ public class NewGameButton {
         Image BLACK_PAWN = new ImageIcon("res/PAWN.png").getImage();
         FIGURES_BLACK = new Image[]{BLACK_BISHOP,BLACK_KING,BLACK_KNIGHT,BLACK_PAWN,BLACK_QUEEN,BLACK_TOWER};
         Player Black = new Player(BlackName, FIGURES_BLACK);
+        Ml.println("SPIEL ERFOLGREICH GELADEN");
     }
 
 
