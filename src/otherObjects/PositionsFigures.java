@@ -5,8 +5,8 @@ package otherObjects;
  */
 
     // Each figure has a number in the array, where after the image of a figure was moved the number also will move to the new location.
-    // White figures: 1 to 6
-    // Black figures: -1 to -6
+    // White Figures: 1 to 6
+    // Black Figures: -1 to -6
     // BLACK:
     //  PawnBlack: 1
     //  Bishop: 2

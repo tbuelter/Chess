@@ -1,9 +1,6 @@
 package GUI;
 
-// import Buttons.NewGameButton;
-// import otherObjects.PositionsFigures;
-// import Buttons.EndGameButton
-// import Buttons.SaveGameButton
+import Buttons.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,7 +17,7 @@ public class Window {
     static JMenuItem newGame;
     static JMenuItem endGame;
     static JMenuItem saveGame;
-    static JFrame frame = new JFrame();
+    public static JFrame frame = new JFrame();
     static JButton buttonsField[][];
     static JPanel panel;
 
@@ -46,24 +43,15 @@ public class Window {
                     // Each figure has a number in the array, where after the image of a figure was moved the number also will move to the new location.
                     // So here will be asked which figure is on the position clicked of the user.
                     // moveFunction(x, y);
-                    /*
+
                     if (newGame == e.getSource()) {
                         NewGameButton.newGame();
-                        newGame.setVisible(false);
-                        endGame.setVisible(true);
-                        saveGame.setVisible(true);
                     } else if (endGame == e.getSource()) {
-                        EndGameButton.endGame();
-                        newGame.setVisible(true);
-                        endGame.setVisible(false);
-                        saveGame.setVisible(false);
+                        SaveGameButton.saveGame();
+                        frame.dispose();
                     } else if (saveGame == e.getSource()) {
                         SaveGameButton.saveGame();
-                        newGame.setVisible(true);
-                        endGame.setVisible(false);
-                        saveGame.setVisible(false);
                     }
-                    */
                 }
             }
         };
@@ -80,7 +68,7 @@ public class Window {
         endGame.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         endGame.addActionListener(actionListener);
         menu.add(endGame);
-        saveGame = new JMenuItem("Save Game");
+        saveGame = new JMenuItem("SaveGameButton Game");
         saveGame.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         saveGame.addActionListener(actionListener);
         menu.add(saveGame);

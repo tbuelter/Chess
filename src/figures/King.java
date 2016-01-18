@@ -1,4 +1,4 @@
-package figures;
+package Figures;
 
 import otherObjects.*;
 public class King {
