@@ -1,4 +1,4 @@
-package misc;
+package Location;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

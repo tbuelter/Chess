@@ -1,6 +1,7 @@
 package Figures;
 
-import otherObjects.*;
+import Location.Location;
+import Player.*;
 public class Tower {
     public Player player;
     public Location loc;

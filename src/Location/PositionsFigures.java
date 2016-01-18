@@ -1,4 +1,4 @@
-package otherObjects;
+package Location;
 
 /**
  * Created by niklasbalazs on 17/01/16.

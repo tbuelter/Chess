@@ -1,4 +1,4 @@
-package otherObjects;
+package Location;
 
 
 public class Location {

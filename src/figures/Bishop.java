@@ -1,6 +1,7 @@
 package Figures;
 
-import otherObjects.*;
+import Location.Location;
+import Player.*;
 public class Bishop {
     public Player player;
     public Location loc;

@@ -1,11 +1,10 @@
 package Buttons;
 
 import misc.Ml;
-import otherObjects.Player;
+import Player.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class NewGameButton {
     public static Image[] FIGURES_BLACK, FIGURES_WHITE;

@@ -1,4 +1,4 @@
-package otherObjects;
+package Player;
 
 import java.awt.*;
 
