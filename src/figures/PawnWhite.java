@@ -1,16 +1,13 @@
 package figures;
 
-import otherObjects.Location;
-import otherObjects.Player;
+import otherObjects.*;
 
-/**
- * Created by niklasbalazs on 16/01/16.
- */
-public class Pawn {
+public class PawnWhite {
     public Player player;
     public Location loc;
-    public int[] steplength = {1, 2};
-    public Pawn(Player player, Location loc, int steplength){
+    public int[] steplengthX = { 0,  0 };
+    public int[] steplengthY = { 1,  2 };
+    public PawnWhite(Player player, Location loc){
         this.player = player;
         this.loc = loc;
     }
@@ -26,7 +23,10 @@ public class Pawn {
     public void setLoc(Location loc) {
         this.loc = loc;
     }
-    public int[] getSteplength(){
-        return steplength;
+    public int[] getSteplengthX(){
+        return steplengthX;
+    }
+    public int[] getSteplengthY(){
+        return steplengthY;
     }
 }

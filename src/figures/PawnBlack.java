@@ -1,12 +1,12 @@
 package figures;
 
 import otherObjects.*;
-public class Bishop {
+public class PawnBlack {
     public Player player;
     public Location loc;
-    public int[] steplengthX = {-1, -2, -3, -4, -5, -6, -7,  1,  2,  3,  4,  5,  6,  7 , 1,  2,  3,  4,  5,  6,  7, -1, -2, -3, -4, -5, -6, -7 };
-    public int[] steplengthY = {-1, -2, -3, -4, -5, -6, -7, -1, -2, -3, -4, -5, -6, -7,  1,  2,  3,  4,  5,  6,  7,  1,  2,  3,  4,  5,  6,  7 };
-    public Bishop(Player player, Location loc){
+    public int[] steplengthX = { 0,  0 };
+    public int[] steplengthY = {-1, -2 };
+    public PawnBlack(Player player, Location loc){
         this.player = player;
         this.loc = loc;
     }

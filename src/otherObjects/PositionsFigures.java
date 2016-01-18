@@ -8,7 +8,7 @@ package otherObjects;
     // White figures: 1 to 6
     // Black figures: -1 to -6
     // BLACK:
-    //  Pawn: 1
+    //  PawnBlack: 1
     //  Bishop: 2
     //  Tower: 3
     //  Knight: 4
@@ -16,7 +16,7 @@ package otherObjects;
     //  King: 6
     //  ----------
     // WHITE:
-    //  Pawn: -1
+    //  PawnBlack: -1
     //  Bishop: -2
     //  Tower: -3
     //  Knight: -4
