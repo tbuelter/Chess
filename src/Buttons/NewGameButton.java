@@ -8,8 +8,6 @@ import java.awt.*;
 
 public class NewGameButton {
     public static Image[] FIGURES_BLACK, FIGURES_WHITE;
-    public Image King, Queen, Knight, Tower, Bishop, Pawn;
-    public Graphics2D Grafik;
 
 
     public static  void newGame() {

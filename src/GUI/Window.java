@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * Created by niklasbalazs on 16/01/16.
@@ -17,11 +19,13 @@ public class Window {
     static JMenuItem newGame;
     static JMenuItem endGame;
     static JMenuItem saveGame;
-    public static JFrame frame = new JFrame();
-    static JButton buttonsField[][];
+    static JFrame frame = new JFrame();
+    static JPanel[][] panelsField;
     static JPanel panel;
+    static boolean switchColor = true;
 
     static int x = 0, y = 0;
+    double xLocation = 0, yLocation = 0;
 
     public Window() {
 
@@ -32,14 +36,6 @@ public class Window {
         ActionListener actionListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() instanceof JButton) {
-                    for (int i = 0; i < buttonsField.length; i++) {
-                        for (int j = 0; j < buttonsField.length; j++) {
-                            if (buttonsField[j][i] == e.getSource()) {
-                                x = j + 1;
-                                y = i + 1;
-                            }
-                        }
-                    }
                     // Each figure has a number in the array, where after the image of a figure was moved the number also will move to the new location.
                     // So here will be asked which figure is on the position clicked of the user.
                     // moveFunction(x, y);
@@ -56,6 +52,52 @@ public class Window {
             }
         };
 
+        MouseListener mouseListener = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if ((x+y)%2 != 0) {
+                    panelsField[x][y].setBackground(Color.DARK_GRAY);
+                } else {
+                    panelsField[x][y].setBackground(Color.white);
+                }
+                for (int i = 0; i < panelsField.length; i++) {
+                    for (int j = 0; j < panelsField.length; j++) {
+                        if (panelsField[j][i] == e.getSource()) {
+                            x = j;
+                            y = i;
+                            xLocation = j * 125 - 62.5;
+                            yLocation = i * 125 - 62.5;
+
+                            panelsField[j][i].setBackground(Color.green);
+                        }
+                    }
+                }
+                System.out.println(e.getSource());
+                System.out.println(e.getComponent().getX());
+                System.out.println(e.getComponent().getY());
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        };
+
         menuBar = new JMenuBar();
         menu = new JMenu("Game");
         menu.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
@@ -68,32 +110,42 @@ public class Window {
         endGame.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         endGame.addActionListener(actionListener);
         menu.add(endGame);
-        saveGame = new JMenuItem("SaveGameButton Game");
+        saveGame = new JMenuItem("Save Game");
         saveGame.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         saveGame.addActionListener(actionListener);
         menu.add(saveGame);
 
         panel = new JPanel();
         panel.setLayout(new GridLayout(8, 8));
-        buttonsField = new JButton[8][8];
+        panelsField = new JPanel[8][8];
 
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                buttonsField[j][i] = new JButton("");
-                buttonsField[j][i].setOpaque(false);
-                buttonsField[j][i].setContentAreaFilled(false);
-                buttonsField[j][i].setBorderPainted(false);
-                buttonsField[j][i].addActionListener(actionListener);
-                panel.add(buttonsField[j][i]);
+                panelsField[j][i] = new JPanel() {
+                    @Override
+                    public void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+                    }
+                };
+                if (switchColor == true) {
+                    panelsField[j][i].setBackground(Color.white);
+                    switchColor = false;
+                } else {
+                    panelsField[j][i].setBackground(Color.DARK_GRAY);
+                    switchColor = true;
+                }
+                panelsField[j][i].addMouseListener(mouseListener);
+                panel.add(panelsField[j][i]);
+            }
+            if (switchColor == true) {
+                switchColor = false;
+            } else {
+                switchColor = true;
             }
         }
 
-        frame.setLayout(new BorderLayout());
-        frame.setContentPane(new JLabel(new ImageIcon("res/chessboard.gif")));
-        frame.setLayout(new BorderLayout());
-        panel.setOpaque(false);
         frame.add(panel);
-        frame.setSize(1000, 1045);
+        frame.setSize(1040, 1040);
         frame.setJMenuBar(menuBar);
         frame.setVisible(true);
 
