@@ -6,7 +6,7 @@ import Player.Player;
 import javax.swing.*;
 import java.awt.*;
 
-public class NewGameButton {
+public class NewGame {
     public static Image[] FIGURES_BLACK, FIGURES_WHITE;
 
 

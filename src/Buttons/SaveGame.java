@@ -8,7 +8,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FilenameFilter;
 
-public class SaveGameButton {
+public class SaveGame {
     private static  JFileChooser FileChooser = new JFileChooser();
     private static final String Path = "ChessGameSave.CHSAVE";
     private static String[]filter = new String[]{".CHSAVE"};

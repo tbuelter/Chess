@@ -41,12 +41,12 @@ public class Window {
                     // moveFunction(x, y);
 
                     if (newGame == e.getSource()) {
-                        NewGameButton.newGame();
+                        NewGame.newGame();
                     } else if (endGame == e.getSource()) {
-                        SaveGameButton.saveGame();
+                        SaveGame.saveGame();
                         frame.dispose();
                     } else if (saveGame == e.getSource()) {
-                        SaveGameButton.saveGame();
+                        SaveGame.saveGame();
                     }
                 }
             }
