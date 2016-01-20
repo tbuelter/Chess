@@ -35,7 +35,7 @@ public class Window {
 
         ActionListener actionListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() instanceof JButton) {
+                if (e.getSource() instanceof JMenuItem) {
                     // Each figure has a number in the array, where after the image of a figure was moved the number also will move to the new location.
                     // So here will be asked which figure is on the position clicked of the user.
                     // moveFunction(x, y);
@@ -44,7 +44,7 @@ public class Window {
                         NewGame.newGame();
                     } else if (endGame == e.getSource()) {
                         SaveGame.saveGame();
-                        frame.dispose();
+                        System.exit(0);
                     } else if (saveGame == e.getSource()) {
                         SaveGame.saveGame();
                     }

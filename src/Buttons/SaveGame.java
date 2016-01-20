@@ -18,7 +18,7 @@ public class SaveGame {
     }
     public static void saveGame(){
         FileChooser.setFileFilter(new FileNameExtensionFilter("Chess Saves", filter));
-        FileChooser.setCurrentDirectory(new File(System.getProperty(Path)));
+        FileChooser.setCurrentDirectory(new File(Path));
         int choice = FileChooser.showSaveDialog(null);
 
     }
