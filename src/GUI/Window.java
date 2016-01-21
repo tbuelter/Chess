@@ -14,28 +14,114 @@ import java.awt.event.MouseListener;
  */
 public class Window {
 
-    static JMenuBar menuBar;
-    static JMenu menu;
-    static JMenuItem newGame;
-    static JMenuItem endGame;
-    static JMenuItem saveGame;
-    static JFrame frame = new JFrame();
-    static JPanel[][] panelsField;
-    static JPanel panel;
-    static boolean switchColor = true;
+    public void paintBack() {
+        Graphics g = frame.getGraphics();
+        if ((x+y)%2 != 0) {
+            g.clearRect(xLocation, yLocation, 130, 130);
+            g.setColor(Color.darkGray);
+            g.fillRect(xLocation, yLocation, 130, 130);
+        } else {
+            g.clearRect(xLocation, yLocation, 130, 130);
+            g.setColor(Color.white);
+            g.fillRect(xLocation, yLocation, 130, 130);
+        }
+    }
 
-    static int x = 0, y = 0;
-    double xLocation = 0, yLocation = 0;
+    public void paintPosition() {
+        Graphics g = frame.getGraphics();
+        g.drawImage(BLACK_KNIGHT, xLocation + 15, yLocation + 5, 100, 120, null);
+    }
+
+    JMenuBar menuBar;
+    JMenu menu;
+    JMenuItem newGame;
+    JMenuItem endGame;
+    JMenuItem saveGame;
+    JFrame frame = new JFrame() {
+        @Override
+        public void paint(Graphics g) {
+            super.paint(g);
+            g.setColor(Color.darkGray);
+            g.fillRect(0, 45, 1040, 1040);
+            int y = 45, x;
+            for (int i = 0; i < 4; i++) {
+                x = 0;
+                for (int j = 0; j < 4; j++) {
+                    g.clearRect(x, y, 130, 130);
+                    x += 260;
+                }
+                x = 130;
+                y += 130;
+                for (int j = 0; j < 4; j++) {
+                    g.clearRect(x, y, 130, 130);
+                    x += 260;
+                }
+                y += 130;
+            }
+            g.drawImage(BLACK_PAWN, 15, 180, 100, 120, null);
+            g.drawImage(BLACK_PAWN, 145, 180, 100, 120, null);
+            g.drawImage(BLACK_PAWN, 275, 180, 100, 120, null);
+            g.drawImage(BLACK_PAWN, 405, 180, 100, 120, null);
+            g.drawImage(BLACK_PAWN, 535, 180, 100, 120, null);
+            g.drawImage(BLACK_PAWN, 665, 180, 100, 120, null);
+            g.drawImage(BLACK_PAWN, 795, 180, 100, 120, null);
+            g.drawImage(BLACK_PAWN, 925, 180, 100, 120, null);
+            g.drawImage(BLACK_TOWER, 15, 50, 100, 120, null);
+            g.drawImage(BLACK_TOWER, 925, 50, 100, 120, null);
+            g.drawImage(BLACK_KNIGHT, 145, 50, 100, 120, null);
+            g.drawImage(BLACK_KNIGHT, 795, 50, 100, 120, null);
+            g.drawImage(BLACK_BISHOP, 275, 50, 100, 120, null);
+            g.drawImage(BLACK_BISHOP, 665, 50, 100, 120, null);
+            g.drawImage(BLACK_QUEEN, 405, 50, 100, 120, null);
+            g.drawImage(BLACK_KING, 535, 50, 100, 120, null);
+
+            g.drawImage(WHITE_PAWN, 15, 830, 100, 120, null);
+            g.drawImage(WHITE_PAWN, 145, 830, 100, 120, null);
+            g.drawImage(WHITE_PAWN, 275, 830, 100, 120, null);
+            g.drawImage(WHITE_PAWN, 405, 830, 100, 120, null);
+            g.drawImage(WHITE_PAWN, 535, 830, 100, 120, null);
+            g.drawImage(WHITE_PAWN, 665, 830, 100, 120, null);
+            g.drawImage(WHITE_PAWN, 795, 830, 100, 120, null);
+            g.drawImage(WHITE_PAWN, 925, 830, 100, 120, null);
+            g.drawImage(WHITE_TOWER, 15, 960, 100, 120, null);
+            g.drawImage(WHITE_TOWER, 925, 960, 100, 120, null);
+            g.drawImage(WHITE_KNIGHT, 145, 960, 100, 120, null);
+            g.drawImage(WHITE_KNIGHT, 795, 960, 100, 120, null);
+            g.drawImage(WHITE_BISHOP, 275, 960, 100, 120, null);
+            g.drawImage(WHITE_BISHOP, 665, 960, 100, 120, null);
+            g.drawImage(WHITE_QUEEN, 405, 960, 100, 120, null);
+            g.drawImage(WHITE_KING, 535, 960, 100, 120, null);
+        }
+    };
+
+
+    static Image BLACK_PAWN = new ImageIcon("res/PAWN.png").getImage();
+    static Image BLACK_TOWER = new ImageIcon("res/TOWER.png").getImage();
+    static Image BLACK_KNIGHT = new ImageIcon("res/KNIGHT.png").getImage();
+    static Image BLACK_BISHOP = new ImageIcon("res/BISHOP.png").getImage();
+    static Image BLACK_QUEEN = new ImageIcon("res/QUEEN.png").getImage();
+    static Image BLACK_KING = new ImageIcon("res/KING.png").getImage();
+    static Image WHITE_PAWN = new ImageIcon("res/PAWN_WHITE.png").getImage();
+    static Image WHITE_TOWER = new ImageIcon("res/TOWER_WHITE.png").getImage();
+    static Image WHITE_KNIGHT = new ImageIcon("res/KNIGHT_WHITE.png").getImage();
+    static Image WHITE_BISHOP = new ImageIcon("res/BISHOP_WHITE.png").getImage();
+    static Image WHITE_QUEEN = new ImageIcon("res/QUEEN_WHITE.png").getImage();
+    static Image WHITE_KING = new ImageIcon("res/KING_WHITE.png").getImage();
+
+    int x = 0, y = 0;
+    int xLocation = 0, yLocation = 305;
 
     public Window() {
 
         frame.setTitle("Chess");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
+        frame.setBackground(Color.white);
 
         ActionListener actionListener = new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() instanceof JMenuItem) {
+                if (e.getSource() instanceof JButton) {
+
                     // Each figure has a number in the array, where after the image of a figure was moved the number also will move to the new location.
                     // So here will be asked which figure is on the position clicked of the user.
                     // moveFunction(x, y);
@@ -48,6 +134,7 @@ public class Window {
                     } else if (saveGame == e.getSource()) {
                         SaveGame.saveGame();
                     }
+
                 }
             }
         };
@@ -55,26 +142,12 @@ public class Window {
         MouseListener mouseListener = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if ((x+y)%2 != 0) {
-                    panelsField[x][y].setBackground(Color.DARK_GRAY);
-                } else {
-                    panelsField[x][y].setBackground(Color.white);
-                }
-                for (int i = 0; i < panelsField.length; i++) {
-                    for (int j = 0; j < panelsField.length; j++) {
-                        if (panelsField[j][i] == e.getSource()) {
-                            x = j;
-                            y = i;
-                            xLocation = j * 125 - 62.5;
-                            yLocation = i * 125 - 62.5;
-
-                            panelsField[j][i].setBackground(Color.green);
-                        }
-                    }
-                }
-                System.out.println(e.getSource());
-                System.out.println(e.getComponent().getX());
-                System.out.println(e.getComponent().getY());
+                paintBack();
+                x = e.getX() / 130;
+                y = (e.getY()-45) / 130;
+                xLocation = e.getX() / 130 * 130;
+                yLocation = (e.getY()-45) / 130 * 130 + 45;
+                paintPosition();
             }
 
             @Override
@@ -98,54 +171,22 @@ public class Window {
             }
         };
 
+        frame.addMouseListener(mouseListener);
+
         menuBar = new JMenuBar();
         menu = new JMenu("Game");
-        menu.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         menuBar.add(menu);
         newGame = new JMenuItem("New Game");
-        newGame.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         newGame.addActionListener(actionListener);
         menu.add(newGame);
         endGame = new JMenuItem("End Game");
-        endGame.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         endGame.addActionListener(actionListener);
         menu.add(endGame);
         saveGame = new JMenuItem("Save Game");
-        saveGame.setFont(new Font("Helvetica-Thin", Font.PLAIN, 18));
         saveGame.addActionListener(actionListener);
         menu.add(saveGame);
 
-        panel = new JPanel();
-        panel.setLayout(new GridLayout(8, 8));
-        panelsField = new JPanel[8][8];
-
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                panelsField[j][i] = new JPanel() {
-                    @Override
-                    public void paintComponent(Graphics g) {
-                        super.paintComponent(g);
-                    }
-                };
-                if (switchColor == true) {
-                    panelsField[j][i].setBackground(Color.white);
-                    switchColor = false;
-                } else {
-                    panelsField[j][i].setBackground(Color.DARK_GRAY);
-                    switchColor = true;
-                }
-                panelsField[j][i].addMouseListener(mouseListener);
-                panel.add(panelsField[j][i]);
-            }
-            if (switchColor == true) {
-                switchColor = false;
-            } else {
-                switchColor = true;
-            }
-        }
-
-        frame.add(panel);
-        frame.setSize(1040, 1040);
+        frame.setSize(1040, 1085);
         frame.setJMenuBar(menuBar);
         frame.setVisible(true);
 
