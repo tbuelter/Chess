@@ -25,7 +25,7 @@ package Location;
 
 
 public class PositionsFigures {
-    public static int[][] positionOfFigures = new int[][] {
+    public int[][] positionOfFigures = new int[][] {
             { -3, -4, -2, -5, -6, -2, -4, -3 },
             { -1, -1, -1, -1, -1, -1, -1, -1 },
             {  0,  0,  0,  0,  0,  0,  0,  0 },
