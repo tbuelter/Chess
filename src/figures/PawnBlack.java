@@ -7,6 +7,7 @@ public class PawnBlack {
     public Location loc;
     public int[] steplengthX = { 0,  0 };
     public int[] steplengthY = {-1, -2 };
+    public boolean firstStepMade = false;
     public PawnBlack(Player player, Location loc){
         this.player = player;
         this.loc = loc;

@@ -7,6 +7,7 @@ public class King {
     public Location loc;
     public int[] steplengthX = {-1,  0,  1,  0 };
     public int[] steplengthY = { 0, -1,  0,  1 };
+    public boolean firstStepMade = false;
     public King(Player player, Location loc){
         this.player = player;
         this.loc = loc;
